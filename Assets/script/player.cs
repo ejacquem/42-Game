@@ -52,23 +52,21 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.AddForce(vect.normalized * 1000 * velocity * Time.fixedDeltaTime);
-        //pointer.AddForce(vect.normalized * 1000 * velocity * Time.fixedDeltaTime);
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        Debug.Log(aimAngle);
+       // Debug.Log(aimAngle);
         rb.rotation = aimAngle;
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.tag == "Enemy")
-            Destroy(gameObject);
-    }
-
     public void Damage(int damage)
     {
+        Debug.Log("player hit");
         health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
