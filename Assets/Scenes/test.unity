@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 864671914}
   - component: {fileID: 864671913}
   - component: {fileID: 864671912}
+  - component: {fileID: 864671915}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -706,11 +707,24 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.9721952, y: 0.9905894, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1327414045}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864671915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864671911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1886f5609deead64ea25b0f5fa8990bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1327414045}
 --- !u!1 &1059580104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1026,7 @@ GameObject:
   - component: {fileID: 1327414046}
   - component: {fileID: 1327414048}
   m_Layer: 0
-  m_Name: Viseur
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,12 +1092,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327414043}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0286, y: 1.0095, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 864671914}
   - {fileID: 1618681536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1171,7 +1184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99195e9ae77704d4591c054c67ac8cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer: {fileID: 1618681536}
   mousePosition: {x: 0, y: 0}
   velocity: 5
   bulletPrefab: {fileID: 7046518414608619770, guid: 5e903b01fde85b440b25973aba2b57be, type: 3}
@@ -1849,6 +1861,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1974482674}
+  - {fileID: 864671914}
   - {fileID: 1327414045}
   - {fileID: 536921388}
   - {fileID: 1208394579}
