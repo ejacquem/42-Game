@@ -11,17 +11,14 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI ammotxt;
     public TextMeshProUGUI healthtxt;
     public TextMeshProUGUI speedtxt;
+    [SerializeField]
     private Player player;
-    
-    PlayerUI(Player player)
+
+    private void Update()
     {
-        this.player = player;
+            ammotxt.text = player.GetAmmo().ToString();
+            healthtxt.text = player.GetHealth().ToString();
+            speedtxt.text = player.GetSpeed().ToString();
     }
 
-    void updateUI()
-    {
-        ammotxt.text = player.getAmmo().ToString();
-        healthtxt.text = player.getHealth().ToString();
-        speedtxt.text = player.getSpeed().ToString();
-    }
 }

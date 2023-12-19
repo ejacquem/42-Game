@@ -58,7 +58,14 @@ public class Player : MonoBehaviour
         rb.rotation = aimAngle;
         
     }
+    public int GetAmmo()
+    { return ammo; }
 
+    public int GetHealth()
+    { return health; }
+
+    public Vector2 GetSpeed()
+    { return (vect.normalized * velocity); }
     public void Damage(int damage)
     {
         Debug.Log("player hit");

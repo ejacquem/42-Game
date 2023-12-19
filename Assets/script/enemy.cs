@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,14 +13,18 @@ public class Enemy : MonoBehaviour
     int currentHealth;
     public float moveSpeed = 2f;
     Rigidbody2D rb;
-   public Transform target;
+     public Transform target;
     Vector2 enemyPos;
     Vector2 targetPos;
+    public SpriteRenderer rendererX;
+    private Color baseColor;
     // Start is called before the first frame update
     void Start()
     {
         box = GetComponent<BoxCollider2D>();
         currentHealth = maxHealth;
+        baseColor = rendererX.color;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -39,9 +44,21 @@ public class Enemy : MonoBehaviour
             collision.collider.GetComponent<Rigidbody2D>().AddForce(direction * knockbackForce * 100, ForceMode2D.Force);
         }
     }
+
+    private IEnumerator ChangeColor()
+    {
+        rendererX.color = Color.white;
+        yield return new WaitForSeconds(0.09f);
+        rendererX.color = baseColor;
+        yield return new WaitForSeconds(0.09f);
+        rendererX.color = Color.white;
+        yield return new WaitForSeconds(0.09f);
+        rendererX.color = baseColor;
+    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        StartCoroutine(ChangeColor());
         if (currentHealth <= 0)
         {
             Die();
