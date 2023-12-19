@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Transform movement;
     private Rigidbody2D rb;
