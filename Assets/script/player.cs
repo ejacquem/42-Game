@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         health = 100;
         ammotxt.text = ammo.ToString();
         movement = GetComponent<Transform>();
-        rb = GetComponentInChildren<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         delay = fireRate;
         Debug.Log(movement.position.x);
     }
@@ -51,17 +51,24 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement.Translate(vect.normalized * velocity * Time.fixedDeltaTime);
-
+        rb.AddForce(vect.normalized * 1000 * velocity * Time.fixedDeltaTime);
+        //pointer.AddForce(vect.normalized * 1000 * velocity * Time.fixedDeltaTime);
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        Debug.Log(aimAngle);
         rb.rotation = aimAngle;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag == "Enemy")
             Destroy(gameObject);
+    }
+
+    public void Damage(int damage)
+    {
+        health -= damage;
     }
 
 }
