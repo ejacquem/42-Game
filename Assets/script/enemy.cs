@@ -70,8 +70,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Instantiate(ammoPrefab, transform.position, Quaternion.identity);
+        UIManager.instance.AddScore(1);
         Destroy(gameObject);
     }
-
-
 }

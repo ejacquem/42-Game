@@ -14,19 +14,14 @@ public class Player : MonoBehaviour
     public float fireRate = 2;
     private int ammo, health;
     public int maxAmmo = 20;
-    public TextMeshProUGUI ammotxt;
-    public TextMeshProUGUI healthtxt;
-    public TextMeshProUGUI speedtxt;
     // Start is called before the first frame update
     void Start()
     {
         ammo = maxAmmo;
         health = 100;
-        ammotxt.text = ammo.ToString();
         movement = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         delay = fireRate;
-        Debug.Log(movement.position.x);
     }
 
     // Update is called once per frame
@@ -37,15 +32,12 @@ public class Player : MonoBehaviour
         vect.y = Input.GetAxisRaw("Vertical");
 
         delay += Time.deltaTime;
-        healthtxt.text = health.ToString();
-        speedtxt.text = (vect.normalized*velocity).ToString();
 
         if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate){
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rb.transform.rotation);
             ammo--;
-            health--;
-            ammotxt.text = ammo.ToString();
             delay = 0;
+            UIManager.instance.UpdateUIAmmo(ammo);
         }
     }
 
@@ -74,11 +66,11 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        UIManager.instance.UpdateUIHealth(health);
     }
     public void AddAmmo(int nbr)
     {
         ammo += nbr;
-        ammotxt.text = ammo.ToString();
     }
 
 }

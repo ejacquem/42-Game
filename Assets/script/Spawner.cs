@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
     public float minRange = 50;
     public float maxRange = 100;
     public GameObject enemyPrefab;
-    public float delay = 2;
+    public float delay = 1;
     private float timer = 0;
 
     // Update is called once per frame
