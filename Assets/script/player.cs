@@ -75,5 +75,10 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void AddAmmo(int nbr)
+    {
+        ammo += nbr;
+        ammotxt.text = ammo.ToString();
+    }
 
 }

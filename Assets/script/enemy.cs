@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,11 +14,12 @@ public class Enemy : MonoBehaviour
     int currentHealth;
     public float moveSpeed = 2f;
     Rigidbody2D rb;
-     public Transform target;
+    public Transform target;
     Vector2 enemyPos;
     Vector2 targetPos;
     public SpriteRenderer rendererX;
     private Color baseColor;
+    public GameObject ammoPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,7 @@ public class Enemy : MonoBehaviour
     
     private void Die()
     {
+        Instantiate(ammoPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
