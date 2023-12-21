@@ -67,8 +67,7 @@ public class EnemyCreeper : MonoBehaviour
 
     private void explode()
     {
-
-            Instantiate(explosionPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+           Instantiate(explosionPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Destroy(gameObject);
     }
 }

@@ -6,7 +6,7 @@ public class enemyRange : MonoBehaviour
 {
     public float knockbackForce = 5f;
     BoxCollider2D box;
-    private readonly float campdist = 5f;
+    public float campdist = 5f;
     int maxHealth = 15;
     int currentHealth;
     public float moveSpeed = 2f;
@@ -22,7 +22,11 @@ public class enemyRange : MonoBehaviour
     public GameObject speedPrefab;
     public GameObject fireRatePrefab;
     public GameObject maxHealthPrefab;
-    
+
+    private float delay;
+    public float fireRate = 2;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,16 +40,23 @@ public class enemyRange : MonoBehaviour
     {
         enemyPos = new Vector2(transform.position.x, transform.position.y);
         targetPos = new Vector2(target.position.x, target.position.y);
+        delay += Time.deltaTime;
         if (Vector2.Distance(enemyPos, targetPos) > campdist)
         {
             transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
         }
         else
         {
-            transform.position = enemyPos + Random.insideUnitCircle;
+            if (delay > fireRate)
+            {
+                GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
+                delay = 0;
+            }
         }
-        transform.LookAt(target);
-        GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, rb.transform.rotation);
+        Vector2 aimDirection = new Vector3(targetPos.x, targetPos.y, 0) - new Vector3(transform.position.x, transform.position.y, 0);
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        transform.up = aimDirection.normalized * Time.deltaTime;
+        // transform.LookAt(target, new Vector3(0,0,1));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -101,4 +112,5 @@ public class enemyRange : MonoBehaviour
         UIManager.instance.AddScore(1);
         Destroy(gameObject);
     }
+
 }
