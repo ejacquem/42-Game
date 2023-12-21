@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private int ammo, health;
     public int maxAmmo = 20;
     public int maxHealth = 100;
+    public bool dashing = false;
     
     void Start()
     {
@@ -34,7 +35,8 @@ public class Player : MonoBehaviour
 
         delay += Time.deltaTime;
 
-        if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate){
+        if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate)
+        {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rb.transform.rotation);
             delay = 0;
             AddAmmo(-1);
@@ -43,10 +45,12 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(1000 * Time.fixedDeltaTime * GetSpeed());
+        
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = aimAngle;
+        if(dashing == false)
+            rb.AddForce(1000 * Time.fixedDeltaTime * GetSpeed());
     }
 
     public int GetAmmo()
