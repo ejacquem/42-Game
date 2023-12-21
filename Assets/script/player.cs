@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            MenuManager.Instance.LoadGameOver();
             Destroy(gameObject);
         }
         UIManager.instance.UpdateUIHealth(health);

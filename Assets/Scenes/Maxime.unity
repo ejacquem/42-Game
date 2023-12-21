@@ -1308,8 +1308,8 @@ MonoBehaviour:
   velocity: 5
   bulletPrefab: {fileID: 7046518414608619770, guid: 5e903b01fde85b440b25973aba2b57be, type: 3}
   firePoint: {fileID: 854912122}
-  fireRate: 0.5
-  maxAmmo: 100
+  fireRate: 2
+  maxAmmo: 20
   maxHealth: 100
 --- !u!1 &1352801797
 GameObject:
