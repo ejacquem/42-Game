@@ -11,7 +11,7 @@ public class enemyRange : MonoBehaviour
     int currentHealth;
     public float moveSpeed = 2f;
     Rigidbody2D rb;
-    public Transform target;
+    private Transform target;
     public Transform firePoint;
     Vector2 enemyPos;
     Vector2 targetPos;

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //oreilles
     public float knockbackForce = 5f;
     BoxCollider2D box;
     int maxHealth = 15;

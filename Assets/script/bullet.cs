@@ -25,13 +25,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!friendly && collision.gameObject.tag == "Enemy")
+        if (friendly && collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             enemy.TakeDamage(bulletDamage);
             //Destroy(gameObject);
         }
-        else if (friendly && collision.gameObject.tag == "Player")
+        else if (!friendly && collision.gameObject.tag == "Player")
         {
             Player player = collision.GetComponent<Player>();
             player.Damage(bulletDamage);

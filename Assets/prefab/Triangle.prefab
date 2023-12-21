@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6557531775684214153}
   - component: {fileID: 7031857241688288837}
+  - component: {fileID: -2725099809929886534}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -26,10 +27,11 @@ Transform:
   m_GameObject: {fileID: 4226900614566735189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.5394115, y: -12.712592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6236660940685050683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7031857241688288837
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6981132, g: 0.5718729, b: 0.07573871, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,3 +86,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2725099809929886534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4226900614566735189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e1e1f10535fea438c8850286e8c63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackForce: 5
+  moveSpeed: 2
+  target: {fileID: 0}
+  firePoint: {fileID: 6236660940685050683}
+  rendererX: {fileID: 7031857241688288837}
+  ammoPrefab: {fileID: 6699276444582183069, guid: 196c3fd4662fb4c4d969aa524c923d7c, type: 3}
+  enemyBulletPrefab: {fileID: 7046518414608619770, guid: 6563094a37c2e1946b2558c8132cddc8, type: 3}
+  speedPrefab: {fileID: 9178813132078351271, guid: 35cf0c16afe561548ae47439a7e73bb0, type: 3}
+  fireRatePrefab: {fileID: 765402181248108568, guid: 99ab7a7da33de33458ff0adb7a7d9cd1, type: 3}
+  maxHealthPrefab: {fileID: 1706209897847829212, guid: f489908d2248a9548a4121b502a6796a, type: 3}
+--- !u!1 &6486314630487119680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6236660940685050683}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6236660940685050683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486314630487119680}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.61, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6557531775684214153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

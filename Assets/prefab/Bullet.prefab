@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friendly: 1
-  circleCollider: {fileID: 0}
+  circleCollider: {fileID: 4596202883404978208}
   bulletDamage: 5
   bulletSpeed: 12
 --- !u!58 &4596202883404978208
