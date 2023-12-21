@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     public TextMeshProUGUI ammotxt;
     public TextMeshProUGUI healthtxt;
+    public TextMeshProUGUI maxHealthTxt;
     public TextMeshProUGUI scoretxt;
     private int score = 0;
 
@@ -29,6 +30,11 @@ public class UIManager : MonoBehaviour
     public void UpdateUIHealth(int health)
     {
         healthtxt.text = health.ToString();
+    }
+
+    public void UpdateUIMaxHealth(int maxHealth)
+    {
+        maxHealthTxt.text = maxHealth.ToString();
     }
     
     public void UpdateUIAmmo(int ammo)

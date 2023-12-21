@@ -176,3 +176,6 @@ MonoBehaviour:
   target: {fileID: 0}
   rendererX: {fileID: 155900506533192992}
   ammoPrefab: {fileID: 6699276444582183069, guid: 196c3fd4662fb4c4d969aa524c923d7c, type: 3}
+  speedPrefab: {fileID: 9178813132078351271, guid: 35cf0c16afe561548ae47439a7e73bb0, type: 3}
+  fireRatePrefab: {fileID: 765402181248108568, guid: 99ab7a7da33de33458ff0adb7a7d9cd1, type: 3}
+  maxHealthPrefab: {fileID: 1706209897847829212, guid: f489908d2248a9548a4121b502a6796a, type: 3}

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float fireRate = 2;
     private int ammo, health;
     public int maxAmmo = 20;
+    public int maxHealth = 100;
     
     void Start()
     {
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(vect.normalized * 1000 * velocity * Time.fixedDeltaTime);
+        rb.AddForce(1000 * Time.fixedDeltaTime * GetSpeed());
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = aimAngle;
@@ -58,7 +59,6 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage)
     {
-        Debug.Log("player hit");
         health -= damage;
         if (health <= 0)
         {
@@ -73,4 +73,20 @@ public class Player : MonoBehaviour
         UIManager.instance.UpdateUIAmmo(ammo);
     }
 
+    public void AddMaxHealth(int nbr)
+    {
+        maxHealth += nbr;
+        UIManager.instance.UpdateUIMaxHealth(maxHealth);
+    }
+    
+    public void AddSpeed(float nbr)
+    {
+        velocity += nbr;
+        //UIManager.instance.UpdateUISpeed(velocity);
+    }
+    public void AddFireRate(float nbr)
+    {
+        fireRate *= 1 - nbr/100;
+        //UIManager.instance.UpdateUISpeed(velocity);
+    }
 }

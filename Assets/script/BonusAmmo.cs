@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Ammo : MonoBehaviour
+public class BonusAmmo : MonoBehaviour
 {
     public float delay = 8;
     private float timer = 0;
@@ -22,7 +22,7 @@ public class Ammo : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag.Equals("Player"))
+        if (col.CompareTag("Player"))
         {
             col.GetComponent<Player>().AddAmmo(5);
             Destroy(gameObject);

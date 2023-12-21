@@ -1,9 +1,5 @@
 using System.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,6 +16,9 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer rendererX;
     private Color baseColor;
     public GameObject ammoPrefab;
+    public GameObject speedPrefab;
+    public GameObject fireRatePrefab;
+    public GameObject maxHealthPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +68,22 @@ public class Enemy : MonoBehaviour
     
     private void Die()
     {
-        Instantiate(ammoPrefab, transform.position, Quaternion.identity);
+        if (Random.Range(0f,1f) <=  0.02f)
+        {
+            Instantiate(maxHealthPrefab, transform.position + (Vector3)Random.insideUnitCircle, Quaternion.identity);
+        }
+        if (Random.Range(0f,1f) <=  0.05f)
+        {
+            Instantiate(fireRatePrefab, transform.position + (Vector3)Random.insideUnitCircle, Quaternion.identity);
+        }
+        if (Random.Range(0f,1f) <= 0.1f)
+        {
+            Instantiate(speedPrefab, transform.position + (Vector3)Random.insideUnitCircle, Quaternion.identity);
+        }
+        if (Random.Range(0f,1f) <= 0.7f)
+        {
+            Instantiate(ammoPrefab, transform.position + (Vector3)Random.insideUnitCircle, Quaternion.identity);
+        }
         UIManager.instance.AddScore(1);
         Destroy(gameObject);
     }

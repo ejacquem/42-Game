@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4334913330103909806}
-  - component: {fileID: 1898432224861362020}
+  - component: {fileID: 772306196605639326}
   - component: {fileID: 6690003482906997165}
   m_Layer: 0
   m_Name: Ammo
@@ -288,7 +288,7 @@ Transform:
   - {fileID: 4144565266093827967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1898432224861362020
+--- !u!114 &772306196605639326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
