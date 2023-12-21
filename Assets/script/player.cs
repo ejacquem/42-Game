@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public float fireRate = 2;
     private int ammo, health;
     public int maxAmmo = 20;
-    // Start is called before the first frame update
+    
     void Start()
     {
         ammo = maxAmmo;
@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
         delay = fireRate;
     }
 
-    // Update is called once per frame
     void Update()
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -35,9 +34,8 @@ public class Player : MonoBehaviour
 
         if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate){
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rb.transform.rotation);
-            ammo--;
             delay = 0;
-            UIManager.instance.UpdateUIAmmo(ammo);
+            AddAmmo(-1);
         }
     }
 
@@ -46,10 +44,9 @@ public class Player : MonoBehaviour
         rb.AddForce(vect.normalized * 1000 * velocity * Time.fixedDeltaTime);
         Vector2 aimDirection = mousePosition - rb.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-       // Debug.Log(aimAngle);
         rb.rotation = aimAngle;
-        
     }
+
     public int GetAmmo()
     { return ammo; }
 
@@ -58,6 +55,7 @@ public class Player : MonoBehaviour
 
     public Vector2 GetSpeed()
     { return (vect.normalized * velocity); }
+
     public void Damage(int damage)
     {
         Debug.Log("player hit");
@@ -68,9 +66,11 @@ public class Player : MonoBehaviour
         }
         UIManager.instance.UpdateUIHealth(health);
     }
+
     public void AddAmmo(int nbr)
     {
         ammo += nbr;
+        UIManager.instance.UpdateUIAmmo(ammo);
     }
 
 }
