@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    [SerializeField]
+    bool friendly;
     [SerializeField]
     CircleCollider2D circleCollider;
     [SerializeField]
@@ -23,10 +25,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (!friendly && collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             enemy.TakeDamage(bulletDamage);
+            //Destroy(gameObject);
+        }
+        else if (friendly && collision.gameObject.tag == "Player")
+        {
+            Player player = collision.GetComponent<Player>();
+            player.Damage(bulletDamage);
             //Destroy(gameObject);
         }
     }

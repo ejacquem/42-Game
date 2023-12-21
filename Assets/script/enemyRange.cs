@@ -1,24 +1,28 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class enemyRange : MonoBehaviour
 {
-    //oreilles
     public float knockbackForce = 5f;
     BoxCollider2D box;
+    private readonly float campdist = 5f;
     int maxHealth = 15;
     int currentHealth;
     public float moveSpeed = 2f;
     Rigidbody2D rb;
     public Transform target;
+    public Transform firePoint;
     Vector2 enemyPos;
     Vector2 targetPos;
     public SpriteRenderer rendererX;
     private Color baseColor;
     public GameObject ammoPrefab;
+    public GameObject enemyBulletPrefab;
     public GameObject speedPrefab;
     public GameObject fireRatePrefab;
     public GameObject maxHealthPrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +36,18 @@ public class Enemy : MonoBehaviour
     {
         enemyPos = new Vector2(transform.position.x, transform.position.y);
         targetPos = new Vector2(target.position.x, target.position.y);
-        transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
+        if (Vector2.Distance(enemyPos, targetPos) > campdist)
+        {
+            transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = enemyPos + Random.insideUnitCircle;
+        }
+        transform.LookAt(target);
+        GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, rb.transform.rotation);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag == "Player")

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3065927700508416629}
   - component: {fileID: 4596202883404978208}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: enemyBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106c3e08330cf394d86195187cf522d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendly: 1
+  friendly: 0
   circleCollider: {fileID: 0}
   bulletDamage: 5
   bulletSpeed: 12
