@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-
+      
     }
 
     public void LoadMain(){
@@ -41,6 +41,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
         Main.SetActive(false);
         GameOver.SetActive(false);
+
     }
 
     public void QuitGame(){

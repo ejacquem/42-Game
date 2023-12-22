@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioMain : MonoBehaviour
 {
     public AudioSource audioSource;
+    public static AudioMain Instance;
 
     public void Start()
     {
