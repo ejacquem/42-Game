@@ -20,11 +20,20 @@ public class Player : MonoBehaviour
     
     void Start()
     {
+        CheckIfMainMenuExist();
         ammo = maxAmmo;
         health = 100;
         movement = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         delay = fireRate;
+    }
+
+    void CheckIfMainMenuExist()
+    {
+        if (MenuManager.Instance == null)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     void Update()
