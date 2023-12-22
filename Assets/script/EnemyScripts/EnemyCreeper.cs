@@ -1,17 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyCreeper : MonoBehaviour
+public class EnemyCreeper : Enemy
 {
-
-    Rigidbody2D rb;
-    BoxCollider2D box;
-    int maxHealth = 15;
-    int currentHealth;
-    public float moveSpeed = 4f;
-    Vector2 enemyPos;
-    Vector2 targetPos;
-    private Color baseColor;
+    private BoxCollider2D box;
+    private Rigidbody2D rb;
     public Transform target;
     public SpriteRenderer rendererX;
     public GameObject explosionPrefab;
@@ -19,15 +12,14 @@ public class EnemyCreeper : MonoBehaviour
     void Start()
     {
         box = GetComponent<BoxCollider2D>();
-        currentHealth = maxHealth;
-        baseColor = rendererX.color;
+        health = maxHealth;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
-        enemyPos = new Vector2(transform.position.x, transform.position.y);
-        targetPos = new Vector2(target.position.x, target.position.y);
+        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 targetPos = new Vector2(target.position.x, target.position.y);
         transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
     }
 
@@ -41,6 +33,7 @@ public class EnemyCreeper : MonoBehaviour
 
     private IEnumerator ChangeColor()
     {
+        Color baseColor = rendererX.color;
         rendererX.color = Color.white;
         yield return new WaitForSeconds(0.09f);
         rendererX.color = baseColor;
@@ -51,23 +44,33 @@ public class EnemyCreeper : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        health -= damage;
         StartCoroutine(ChangeColor());
-        if (currentHealth <= 0)
+        if (health <= 0)
         {
             UIManager.instance.AddScore(2);
             explode();
         }
-    }
-    
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 
     private void explode()
     {
            Instantiate(explosionPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
             Destroy(gameObject);
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Attack(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
     }
 }

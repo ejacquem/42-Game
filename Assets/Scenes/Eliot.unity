@@ -423,7 +423,10 @@ MonoBehaviour:
   playerPos: {fileID: 1327414045}
   minRange: 15
   maxRange: 20
-  enemyPrefab: {fileID: 3955727083227078196, guid: 9411f480b0e01f04c8759f2e5da944ab, type: 3}
+  enemyPrefab:
+  - {fileID: 3955727083227078196, guid: 9411f480b0e01f04c8759f2e5da944ab, type: 3}
+  - {fileID: 3955727083227078196, guid: 072b5c1f087f89549a846777bb878fe4, type: 3}
+  - {fileID: 4226900614566735189, guid: 39b5e3e4d525cf546865fe4febfad719, type: 3}
   delay: 0.5
 --- !u!4 &269148621
 Transform:

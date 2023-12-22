@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 155900506533192992}
   - component: {fileID: 7928927741120286053}
   - component: {fileID: 4550739033424630827}
-  - component: {fileID: 8947848080478939537}
+  - component: {fileID: 1637792587416926122}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &8947848080478939537
+--- !u!114 &1637792587416926122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,11 +168,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3955727083227078196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd7b46e9d0ac1bc409b8b51fc6032896, type: 3}
+  m_Script: {fileID: 11500000, guid: bc13c8719506e1e4fa20230d3d3e421c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 5
+  damage: 5
+  health: 20
+  maxHealth: 20
   moveSpeed: 2
+  knockbackForce: 5
   target: {fileID: 0}
   rendererX: {fileID: 155900506533192992}
   ammoPrefab: {fileID: 6699276444582183069, guid: 196c3fd4662fb4c4d969aa524c923d7c, type: 3}
