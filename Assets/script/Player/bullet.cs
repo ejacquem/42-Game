@@ -12,20 +12,26 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private int bulletSpeed = 5;
     [SerializeField]
-    private AudioSource shootingSound; // Ajoutez cette ligne
+    private AudioSource shootingSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        shootingSound = GetComponent<AudioSource>(); // Obtenir le composant AudioSource
-        shootingSound.Play(); // Jouer le son de tir
+        // test issam Pool
+        shootingSound = AudioSourcePool.Instance.GetAudioSource();
+        if (shootingSound != null)
+        {
+            shootingSound.Play();
+        }
         Destroy(gameObject, 5);
+        /*shootingSound = GameObject.Find("Audio Bullet").GetComponent<AudioSource>();
+        shootingSound.Play(); // Jouez le son de tir ici*/
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(0, bulletSpeed * Time.deltaTime, 0);
-        shootingSound.Play(); // Jouer le son de tir
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,6 +48,14 @@ public class Bullet : MonoBehaviour
             Player player = collision.GetComponent<Player>();
             player.Damage(bulletDamage);
             //Destroy(gameObject);
+        }
+    }
+    // test issam :
+    private void OnDestroy()
+    {
+        if (shootingSound != null)
+        {
+            AudioSourcePool.Instance.ReturnAudioSource(shootingSound);
         }
     }
 }

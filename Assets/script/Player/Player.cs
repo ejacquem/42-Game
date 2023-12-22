@@ -17,7 +17,9 @@ public class Player : MonoBehaviour
     public int maxAmmo = 20;
     public int maxHealth = 100;
     public bool dashing = false;
-    
+    [SerializeField]
+    private AudioSource shootingSound; // Ajoutez cette ligne
+
     void Start()
     {
         CheckIfMainMenuExist();
@@ -73,6 +75,8 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage)
     {
+        shootingSound = GameObject.Find("Audio Damage").GetComponent<AudioSource>();
+        shootingSound.Play();
         health -= damage;
         if (health <= 0)
         {
