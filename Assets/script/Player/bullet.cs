@@ -5,8 +5,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField]
     bool friendly;
-    [SerializeField]
-    CircleCollider2D circleCollider;
+   // [SerializeField]
+   // CircleCollider2D circleCollider;
     [SerializeField]
     private int bulletDamage = 5;
     [SerializeField]
