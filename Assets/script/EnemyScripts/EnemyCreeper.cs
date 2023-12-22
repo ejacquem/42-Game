@@ -26,9 +26,7 @@ public class EnemyCreeper : Enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag == "Player")
-        {
             explode();
-        }
     }
 
     private IEnumerator ChangeColor()
@@ -42,8 +40,15 @@ public class EnemyCreeper : Enemy
         yield return new WaitForSeconds(0.09f);
         rendererX.color = baseColor;
     }
-    public void TakeDamage(int damage)
+
+    private void explode()
     {
+        Instantiate(explosionPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    public override void TakeDamage(float damage)
+    {        
         health -= damage;
         StartCoroutine(ChangeColor());
         if (health <= 0)
@@ -53,20 +58,9 @@ public class EnemyCreeper : Enemy
         }
     }
 
-    private void explode()
-    {
-           Instantiate(explosionPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            Destroy(gameObject);
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void Attack(Player player)
     {
-        throw new System.NotImplementedException();
+        explode();
     }
 
     public override void Die()

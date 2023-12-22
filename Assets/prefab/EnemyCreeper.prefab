@@ -384,7 +384,7 @@ MonoBehaviour:
   moveSpeed: 4
   knockbackForce: 20
   target: {fileID: 0}
-  rendererX: {fileID: 4074565620990924344}
+  rendererX: {fileID: 2619875619402289920}
   explosionPrefab: {fileID: 3595999868026842535, guid: 120bcd5d1a6728f45be54609e45810b3, type: 3}
 --- !u!1 &4300858109635486411
 GameObject:

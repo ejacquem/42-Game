@@ -12,10 +12,10 @@ public class EnemiExplosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 0.5f);
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         Vector2 direction = (other.transform.position - transform.position).normalized;
         if (other.CompareTag("Player"))
