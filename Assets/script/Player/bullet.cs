@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     private int bulletSpeed = 5;
     [SerializeField]
     private AudioSource shootingSound; // Ajoutez cette ligne
-
     // Start is called before the first frame update
     void Start()
     {

@@ -98,16 +98,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1e1f10535fea438c8850286e8c63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 5
+  damage: 5
+  health: 20
+  maxHealth: 20
   moveSpeed: 2
-  target: {fileID: 0}
+  knockbackForce: 5
   firePoint: {fileID: 6236660940685050683}
   rendererX: {fileID: 7031857241688288837}
-  ammoPrefab: {fileID: 6699276444582183069, guid: 196c3fd4662fb4c4d969aa524c923d7c, type: 3}
   enemyBulletPrefab: {fileID: 7046518414608619770, guid: 6563094a37c2e1946b2558c8132cddc8, type: 3}
+  ammoPrefab: {fileID: 6699276444582183069, guid: 196c3fd4662fb4c4d969aa524c923d7c, type: 3}
   speedPrefab: {fileID: 9178813132078351271, guid: 35cf0c16afe561548ae47439a7e73bb0, type: 3}
   fireRatePrefab: {fileID: 765402181248108568, guid: 99ab7a7da33de33458ff0adb7a7d9cd1, type: 3}
   maxHealthPrefab: {fileID: 1706209897847829212, guid: f489908d2248a9548a4121b502a6796a, type: 3}
+  campdist: 5
+  fireRate: 2
 --- !u!1 &6486314630487119680
 GameObject:
   m_ObjectHideFlags: 0
