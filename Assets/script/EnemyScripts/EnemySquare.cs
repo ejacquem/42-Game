@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class EnemySquare : Enemy
 {
-    private BoxCollider2D box;
-    private Rigidbody2D rb;
     public Transform target;
     public SpriteRenderer rendererX;
     public GameObject ammoPrefab;
@@ -14,7 +12,6 @@ public class EnemySquare : Enemy
     
     void Start()
     {
-        box = GetComponent<BoxCollider2D>();
         health = maxHealth;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }

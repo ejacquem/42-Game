@@ -18,11 +18,17 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     public bool dashing = false;
     [SerializeField]
-    private AudioSource shootingSound; // Ajoutez cette ligne
+    public AudioClip shootingSound; // Ajoutez cette ligne
+    public AudioClip damageSound; // Ajoutez cette ligne
+    [SerializeField]
+    bool mainMenu = true;
 
     void Start()
     {
-        CheckIfMainMenuExist();
+        if(mainMenu)
+        {
+            CheckIfMainMenuExist();
+        }
         ammo = maxAmmo;
         health = 100;
         movement = GetComponent<Transform>();
@@ -49,6 +55,7 @@ public class Player : MonoBehaviour
         if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rb.transform.rotation);
+            AudioSource.PlayClipAtPoint(shootingSound, transform.position);
             delay = 0;
             AddAmmo(-1);
         }
@@ -75,8 +82,7 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage)
     {
-        shootingSound = GameObject.Find("Audio Damage").GetComponent<AudioSource>();
-        shootingSound.Play();
+        AudioSource.PlayClipAtPoint(damageSound, transform.position);
         health -= damage;
         if (health <= 0)
         {

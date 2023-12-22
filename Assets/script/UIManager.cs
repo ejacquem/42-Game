@@ -12,10 +12,8 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Instance Creation");
         if(instance != null)
         {
-            Debug.Log("Instance Already there");
             return ;
         }
         instance = this;
