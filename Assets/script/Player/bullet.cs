@@ -11,9 +11,13 @@ public class Bullet : MonoBehaviour
     private int bulletDamage = 5;
     [SerializeField]
     private int bulletSpeed = 5;
+    [SerializeField]
+    private AudioSource shootingSound; // Ajoutez cette ligne
     // Start is called before the first frame update
     void Start()
     {
+        shootingSound = GetComponent<AudioSource>(); // Obtenir le composant AudioSource
+        shootingSound.Play(); // Jouer le son de tir
         Destroy(gameObject, 5);
     }
 
