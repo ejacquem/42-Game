@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyRange : Enemy
 {
-    BoxCollider2D box;
-    Rigidbody2D rb;
-    private Transform target;
     public Transform firePoint;
     public SpriteRenderer rendererX;
     public GameObject enemyBulletPrefab;
@@ -18,34 +15,34 @@ public class EnemyRange : Enemy
     private float delay;
     public float campdist = 5f;
     public float fireRate = 2;
-
-    void Start()
+    
+    new void Start()
     {
-        box = GetComponent<BoxCollider2D>();
-        health = maxHealth;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        base.Start();
     }
 
-    private void Update()
+    new void Update()
     {
-        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
-        Vector2 targetPos = new Vector2(target.position.x, target.position.y);
-        delay += Time.deltaTime;
-        if (Vector2.Distance(enemyPos, targetPos) > campdist)
-        {
-            transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            if (delay > fireRate)
+        if(target != null){
+            Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
+            Vector2 targetPos = new Vector2(target.position.x, target.position.y);
+            delay += Time.deltaTime;
+            if (Vector2.Distance(enemyPos, targetPos) > campdist)
             {
-                GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
-                delay = 0;
+                transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
             }
+            else
+            {
+                if (delay > fireRate)
+                {
+                    GameObject bullet = Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
+                    delay = 0;
+                }
+            }
+            Vector2 aimDirection = new Vector3(targetPos.x, targetPos.y, 0) - new Vector3(transform.position.x, transform.position.y, 0);
+            float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+            transform.up = aimDirection.normalized * Time.deltaTime;
         }
-        Vector2 aimDirection = new Vector3(targetPos.x, targetPos.y, 0) - new Vector3(transform.position.x, transform.position.y, 0);
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        transform.up = aimDirection.normalized * Time.deltaTime;
         // transform.LookAt(target, new Vector3(0,0,1));
     }
 
@@ -86,7 +83,7 @@ public class EnemyRange : Enemy
     {
         throw new System.NotImplementedException();
     }
-
+/*
     public override void Die()
     {
         if (Random.Range(0f,1f) <=  0.02f)
@@ -107,5 +104,5 @@ public class EnemyRange : Enemy
         }
         UIManager.instance.AddScore(1);
         Destroy(gameObject);
-    }
+    }*/
 }

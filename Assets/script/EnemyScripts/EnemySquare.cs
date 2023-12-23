@@ -3,25 +3,22 @@ using UnityEngine;
 
 public class EnemySquare : Enemy
 {
-    public Transform target;
     public SpriteRenderer rendererX;
     public GameObject ammoPrefab;
     public GameObject speedPrefab;
     public GameObject fireRatePrefab;
     public GameObject maxHealthPrefab;
     
-    void Start()
+    new void Start()
     {
-        health = maxHealth;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        base.Start();
     }
 
-    private void Update()
+    new void Update()
     {
-        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
-        Vector2 targetPos = new Vector2(target.position.x, target.position.y);
-        transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
+        base.Update();
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag == "Player")
@@ -58,7 +55,7 @@ public class EnemySquare : Enemy
         //Debug.Log(direction);
         player.GetComponent<Rigidbody2D>().AddForce(direction * knockbackForce * 100, ForceMode2D.Force);
     }
-
+/*
     public override void Die()
     {
         if (Random.Range(0f,1f) <=  0.02f)
@@ -79,5 +76,5 @@ public class EnemySquare : Enemy
         }
         UIManager.instance.AddScore(1);
         Destroy(gameObject);
-    }
+    }*/
 }

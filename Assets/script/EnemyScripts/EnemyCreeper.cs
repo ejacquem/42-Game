@@ -3,27 +3,23 @@ using UnityEngine;
 
 public class EnemyCreeper : Enemy
 {
-    public Transform target;
     public SpriteRenderer rendererX;
     public GameObject explosionPrefab;
-
-    void Start()
+    
+    new void Start()
     {
-        health = maxHealth;
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        base.Start();
     }
 
-    private void Update()
+    new void Update()
     {
-        Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
-        Vector2 targetPos = new Vector2(target.position.x, target.position.y);
-        transform.position = Vector2.MoveTowards(enemyPos, targetPos, moveSpeed * Time.deltaTime);
+        base.Update();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.tag == "Player")
-            explode();
+            Explode();
     }
 
     private IEnumerator ChangeColor()
@@ -38,10 +34,10 @@ public class EnemyCreeper : Enemy
         rendererX.color = baseColor;
     }
 
-    private void explode()
+    private void Explode()
     {
         Instantiate(explosionPrefab, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-        Destroy(gameObject);
+        Die();
     }
 
     public override void TakeDamage(float damage)
@@ -51,17 +47,12 @@ public class EnemyCreeper : Enemy
         if (health <= 0)
         {
             UIManager.instance.AddScore(2);
-            explode();
+            Explode();
         }
     }
 
     public override void Attack(Player player)
     {
-        explode();
-    }
-
-    public override void Die()
-    {
-        Destroy(gameObject);
+        Explode();
     }
 }
