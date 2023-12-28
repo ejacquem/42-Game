@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BonusData
   m_EditorClassIdentifier: 
   bonusPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6699276444582183069, guid: 196c3fd4662fb4c4d969aa524c923d7c, type: 3}
+  - {fileID: 765402181248108568, guid: 99ab7a7da33de33458ff0adb7a7d9cd1, type: 3}
+  - {fileID: 9178813132078351271, guid: 35cf0c16afe561548ae47439a7e73bb0, type: 3}

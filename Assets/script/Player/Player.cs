@@ -52,13 +52,13 @@ public class Player : MonoBehaviour
 
         delay += Time.deltaTime;
 
-        if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rb.transform.rotation);
-            AudioSource.PlayClipAtPoint(shootingSound, transform.position);
-            delay = 0;
-            AddAmmo(-1);
-        }
+        // if(ammo > 0 && Input.GetMouseButton(0) && delay > fireRate)
+        // {
+        //     GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rb.transform.rotation);
+        //     AudioSource.PlayClipAtPoint(shootingSound, transform.position);
+        //     delay = 0;
+        //     AddAmmo(-1);
+        // }
     }
 
     private void FixedUpdate()
