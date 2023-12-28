@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NavMeshPlus.Components;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -17,6 +18,7 @@ public class BuildingScript : MonoBehaviour
     public GameObject wall;
     public SpriteRenderer rendererX;
     private Dictionary<Vector2, bool> map = new Dictionary<Vector2, bool>();
+    public NavMeshSurface buildableNavMeshSurface;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class BuildingScript : MonoBehaviour
             {
                 map.Add(gridPos, true);
                 Instantiate(wall, gridPos, Quaternion.Euler(0, 0, 0));
+                buildableNavMeshSurface.BuildNavMesh();
             }
         }
     }
