@@ -11,11 +11,13 @@ public class BuildingScript : MonoBehaviour
     Vector2 mousePos;
     Vector2 gridPos;
     public Transform player;
-    bool buildingMode = true;
+    public bool buildingMode = true;
     bool canPlace = true;
     public GameObject placementCursor;
     bool collide = false;
-    public GameObject wall;
+    [SerializeField]
+    public GameObject[] builds;
+    private int buildIndex = 0;
     public SpriteRenderer rendererX;
     private Dictionary<Vector2, bool> map = new Dictionary<Vector2, bool>();
     public NavMeshSurface buildableNavMeshSurface;
@@ -30,14 +32,14 @@ public class BuildingScript : MonoBehaviour
         if(buildingMode)
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            SelectBuild();
             setGridPos(mousePos);
-            placementCursor.transform.rotation = Quaternion.Euler(0, 0, 0);
-            placementCursor.transform.position = gridPos;
+            placeCursor();
             checkIfCanPlace();
             if(Input.GetMouseButton(0) && canPlace)
             {
                 map.Add(gridPos, true);
-                Instantiate(wall, gridPos, Quaternion.Euler(0, 0, 0));
+                Instantiate(builds[buildIndex], gridPos, Quaternion.Euler(0, 0, 0));
                 buildableNavMeshSurface.BuildNavMesh();
             }
         }
@@ -72,6 +74,21 @@ public class BuildingScript : MonoBehaviour
         {
             gridPos = newPos;
         }
+    }
+
+    void SelectBuild()
+    {
+        buildIndex += (int)(Input.GetAxis("Mouse ScrollWheel")*10);
+        if(buildIndex < 0)
+            buildIndex = builds.Length - 1;
+        if(buildIndex >= builds.Length)
+            buildIndex = 0;
+    }
+
+    void placeCursor()
+    {
+        placementCursor.transform.rotation = Quaternion.Euler(0, 0, 0);
+        placementCursor.transform.position = gridPos;
     }
 
     // private Vector2 getGridPos(Vector2 vect)
