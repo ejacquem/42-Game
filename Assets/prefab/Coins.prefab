@@ -299,5 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42c13369a7ca74688b49ba15ca9e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverHeight: 0.1
-  hoverSpeed: 1
+  timeBeforeStop: 0.6
+  launchSpeed: 3
+  gravity: 4
+  drag: 0.05
+  hoverHeight: 0.2
+  hoverSpeed: 1.5
