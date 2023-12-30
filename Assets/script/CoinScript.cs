@@ -55,4 +55,15 @@ public class CoinScript : MonoBehaviour
         newPosition.y = initialPosition.y + initialSpeed.y * time - (gravity / 2 * Mathf.Pow(time, 2));
         transform.position = newPosition;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            BuildingScript buildingScript = FindObjectOfType<BuildingScript>();
+            buildingScript.coins += 1;
+            Destroy(gameObject);
+        }
+    }
+
 }

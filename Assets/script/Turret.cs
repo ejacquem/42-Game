@@ -23,7 +23,7 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(target);
+        //  Debug.Log(target);
         if(target == null)
             target = GetNearestEnemy();
         else
@@ -40,7 +40,7 @@ public class Turret : MonoBehaviour
     {
         Vector2 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 270;
-        Debug.Log(angle);
+        //Debug.Log(angle);
         TurretHead.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 

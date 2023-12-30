@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d1bc7707b3c9143a269df4cff5cf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 5
+  fireRate: 2
   detectionRadius: 10
   bulletPrefab: {fileID: 7046518414608619770, guid: 5e903b01fde85b440b25973aba2b57be, type: 3}
   TurretHead: {fileID: 7492137527871889618}

@@ -6,17 +6,24 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+[Serializable]
+public class Build
+{
+    public GameObject prefab;
+    public int cost;
+}
+
 public class BuildingScript : MonoBehaviour
 {
-    Vector2 mousePos;
     Vector2 gridPos;
+    public int coins = 100;
     public Transform player;
     public bool buildingMode = true;
     bool canPlace = true;
     public GameObject placementCursor;
     bool collide = false;
     [SerializeField]
-    public GameObject[] builds;
+    public Build[] builds;
     private int buildIndex = 0;
     public SpriteRenderer rendererX;
     private Dictionary<Vector2, bool> map = new Dictionary<Vector2, bool>();
@@ -31,15 +38,16 @@ public class BuildingScript : MonoBehaviour
     {
         if(buildingMode)
         {
-            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             SelectBuild();
             setGridPos(mousePos);
             placeCursor();
             checkIfCanPlace();
-            if(Input.GetMouseButton(0) && canPlace)
+            if(Input.GetMouseButton(0) && canPlace && coins > builds[buildIndex].cost)
             {
                 map.Add(gridPos, true);
-                Instantiate(builds[buildIndex], gridPos, Quaternion.Euler(0, 0, 0));
+                Instantiate(builds[buildIndex].prefab, gridPos, Quaternion.Euler(0, 0, 0));
+                coins -= builds[buildIndex].cost;
                 buildableNavMeshSurface.BuildNavMesh();
             }
         }

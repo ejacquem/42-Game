@@ -24,16 +24,23 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (friendly && collision.gameObject.tag == "Enemy")
+        // if (friendly && collision.gameObject.tag == "Enemy")
+        // {
+        //     Enemy enemy = collision.GetComponent<Enemy>();
+        //     enemy.TakeDamage(bulletDamage);
+        //     //Destroy(gameObject);
+        // }        
+        // else if (!friendly && collision.gameObject.tag == "Player")
+        // {
+        //     Player player = collision.GetComponent<Player>();
+        //     player.Damage(bulletDamage);
+        //     //Destroy(gameObject);
+        // }
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            EnemyNM enemy = collision.GetComponentInParent<EnemyNM>();
             enemy.TakeDamage(bulletDamage);
-            //Destroy(gameObject);
-        }
-        else if (!friendly && collision.gameObject.tag == "Player")
-        {
-            Player player = collision.GetComponent<Player>();
-            player.Damage(bulletDamage);
+            Debug.Log("Enemy was damaged");
             //Destroy(gameObject);
         }
     }

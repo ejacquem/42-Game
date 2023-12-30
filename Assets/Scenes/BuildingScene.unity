@@ -431,7 +431,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -488,7 +488,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (3)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -885,7 +885,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (6)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,7 +1259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (1)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1316,7 +1316,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (4)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1493,7 +1493,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (9)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1651,7 +1651,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (2)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1708,7 +1708,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (5)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2330,13 +2330,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9206a6070b15bcb489246e4ee9eb9f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coins: 100
   player: {fileID: 1272606968}
   buildingMode: 1
   placementCursor: {fileID: 843491819}
   builds:
-  - {fileID: 7652319061426435297, guid: f0f5be43bbdd0d74d95dde6ba640a76d, type: 3}
-  - {fileID: 5299916307249704864, guid: c5bb073b10bf3b44798d9e9e171031a4, type: 3}
-  - {fileID: 5826901526981655648, guid: 4b6fc800f5407a34b842348748810e28, type: 3}
+  - prefab: {fileID: 7652319061426435297, guid: f0f5be43bbdd0d74d95dde6ba640a76d, type: 3}
+    cost: 1
+  - prefab: {fileID: 5826901526981655648, guid: 4b6fc800f5407a34b842348748810e28, type: 3}
+    cost: 10
+  - prefab: {fileID: 5299916307249704864, guid: c5bb073b10bf3b44798d9e9e171031a4, type: 3}
+    cost: 20
   rendererX: {fileID: 837121237}
   buildableNavMeshSurface: {fileID: 2036736353}
 --- !u!58 &1272606970
@@ -2825,7 +2829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (8)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3281,7 +3285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8656899525596685032, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_Name
-      value: Coins (7)
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 9045419466776192171, guid: 8124ad8ba40ee6d4fbfa38c13e3e1081, type: 3}
       propertyPath: m_LocalPosition.x
