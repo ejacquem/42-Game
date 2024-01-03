@@ -19,7 +19,7 @@ public class PlacementCursorScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collide2D");
+        //Debug.Log("collide2D");
         collide = true;
     }
 

@@ -28,6 +28,7 @@ public class BuildingScript : MonoBehaviour
     public SpriteRenderer rendererX;
     private Dictionary<Vector2, bool> map = new Dictionary<Vector2, bool>();
     public NavMeshSurface buildableNavMeshSurface;
+    public BuildArea buildArea;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,7 @@ public class BuildingScript : MonoBehaviour
     private void checkIfCanPlace()
     {
         collide = placementCursor.GetComponent<PlacementCursorScript>().getCollide();
-        if(collide || (map.TryGetValue(gridPos, out bool isBuildThere) && isBuildThere))
+        if(!buildArea.playerInsideBuildArea || collide || (map.TryGetValue(gridPos, out bool isBuildThere) && isBuildThere))
             setCanPlace(false);
         else setCanPlace(true);
     }

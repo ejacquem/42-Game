@@ -197,7 +197,7 @@ MonoBehaviour:
   target: {fileID: 0}
   rendererX: {fileID: 5018416981631017151}
   damage: 5
-  health: 100
+  health: 10
 --- !u!195 &8556005415688937058
 NavMeshAgent:
   m_ObjectHideFlags: 0
